@@ -8,7 +8,7 @@ export default defineConfig({
     react(),
     tailwindcss()
   ],
-  base: "/GeolexWeb",
+  base: process.env.VITE_SITE_URL || "/GeolexWeb",
   // server: {
   //   port: 5173,
   //   open: true
