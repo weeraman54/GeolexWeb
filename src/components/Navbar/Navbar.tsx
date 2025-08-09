@@ -354,6 +354,7 @@ const Navbar: React.FC<NavbarProps> = ({
         backgroundColor: shouldBeTransparent ? 'transparent' : shouldShrink ? 'transparent' : '#000308',
         isolation: 'isolate',
         zIndex: 50,
+        overflow: 'visible',
       }}
       onMouseEnter={() => setIsNavbarHovered(true)}
       onMouseLeave={() => setIsNavbarHovered(false)}
@@ -458,29 +459,28 @@ const Navbar: React.FC<NavbarProps> = ({
                       Categories
                     </a>
                   </div>
-                  
-                  {/* Categories Dropdown */}
-                  {isCategoriesVisible && (
-                    <div 
-                      className="categories-dropdown-container fixed left-0 w-full z-[9999] shadow-2xl"
-                      onMouseEnter={handleCategoriesMouseEnter}
-                      onMouseLeave={handleCategoriesMouseLeave}
-                      style={{
-                        top: size === 'sm' ? '56px' : size === 'xs' ? '48px' : size === 'md' ? '72px' : size === 'lg' ? '80px' : '96px',
-                        left: '0',
-                        right: '0',
-                        width: '100vw',
-                        position: 'fixed',
-                        zIndex: 9999,
-                        marginTop: '0px',
-                      }}
-                    >
-                      <div className="w-full">
-                        <Categories />
-                      </div>
-                    </div>
-                  )}
                 </div>
+                
+                {/* Categories Dropdown - Fixed positioning spanning full viewport */}
+                {isCategoriesVisible && (
+                  <div 
+                    className="categories-dropdown-container"
+                    onMouseEnter={handleCategoriesMouseEnter}
+                    onMouseLeave={handleCategoriesMouseLeave}
+                    style={{
+                      position: 'fixed',
+                      top: size === 'sm' ? '56px' : size === 'xs' ? '48px' : size === 'md' ? '72px' : size === 'lg' ? '80px' : '96px',
+                      left: '0',
+                      width: '100vw',
+                      zIndex: 9999,
+                      marginTop: '0px',
+                    }}
+                  >
+                    <div className="w-full">
+                      <Categories />
+                    </div>
+                  </div>
+                )}
                 
                 <a
                   href="/about"
