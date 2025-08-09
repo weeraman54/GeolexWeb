@@ -8,7 +8,7 @@ interface AuthContextType {
   loading: boolean
   signIn: (email: string, password: string) => Promise<{ success: boolean; error?: string }>
   signUp: (email: string, password: string, fullName: string, phone?: string) => Promise<{ success: boolean; error?: string }>
-  signInWithGoogle: () => Promise<{ success: boolean; error?: string }>
+  // signInWithGoogle: () => Promise<{ success: boolean; error?: string }>
   signOut: () => Promise<{ success: boolean; error?: string }>
   resetPassword: (email: string) => Promise<{ success: boolean; error?: string }>
   updatePassword: (newPassword: string) => Promise<{ success: boolean; error?: string }>
@@ -103,9 +103,9 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
     }
   }
 
-  const signInWithGoogle = async () => {
-    return await AuthService.signInWithGoogle()
-  }
+  // const signInWithGoogle = async () => {
+  //   return await AuthService.signInWithGoogle()
+  // }
 
   const signOut = async () => {
     setLoading(true)
@@ -133,7 +133,7 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
     loading,
     signIn,
     signUp,
-    signInWithGoogle,
+    // signInWithGoogle,
     signOut,
     resetPassword,
     updatePassword,

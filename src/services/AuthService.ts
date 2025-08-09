@@ -138,31 +138,31 @@ export class AuthService {
   /**
    * Sign in with Google OAuth
    */
-  static async signInWithGoogle(): Promise<{ success: boolean; error?: string }> {
-    try {
-      const siteUrl = import.meta.env.VITE_SITE_URL || 'http://localhost:5173';
-      const { error } = await supabase.auth.signInWithOAuth({
-        provider: 'google',
-        options: {
-          redirectTo: `${siteUrl}/auth/callback`,
-          queryParams: {
-            user_type: 'customer'
-          }
-        }
-      })
+  // static async signInWithGoogle(): Promise<{ success: boolean; error?: string }> {
+  //   try {
+  //     const siteUrl = import.meta.env.VITE_SITE_URL || 'http://localhost:5173';
+  //     const { error } = await supabase.auth.signInWithOAuth({
+  //       provider: 'google',
+  //       options: {
+  //         redirectTo: `${siteUrl}/auth/callback`,
+  //         queryParams: {
+  //           user_type: 'customer'
+  //         }
+  //       }
+  //     })
 
-      if (error) {
-        return { success: false, error: error.message }
-      }
+  //     if (error) {
+  //       return { success: false, error: error.message }
+  //     }
 
-      return { success: true }
-    } catch (error) {
-      return {
-        success: false,
-        error: error instanceof Error ? error.message : 'Google sign in failed'
-      }
-    }
-  }
+  //     return { success: true }
+  //   } catch (error) {
+  //     return {
+  //       success: false,
+  //       error: error instanceof Error ? error.message : 'Google sign in failed'
+  //     }
+  //   }
+  // }
 
   /**
    * Sign out current user
