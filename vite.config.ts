@@ -8,8 +8,9 @@ export default defineConfig({
     react(),
     tailwindcss()
   ],
-  server: {
-    port: 5173,
-    open: true
-  }
+  base: "/GeolexWeb",
+  // server: {
+  //   port: 5173,
+  //   open: true
+  // }
 })
