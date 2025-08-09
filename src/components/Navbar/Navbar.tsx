@@ -351,7 +351,9 @@ const Navbar: React.FC<NavbarProps> = ({
         }
       `}
       style={{
-        backgroundColor: shouldBeTransparent ? 'transparent' : shouldShrink ? 'transparent' : '#000308'
+        backgroundColor: shouldBeTransparent ? 'transparent' : shouldShrink ? 'transparent' : '#000308',
+        isolation: 'isolate',
+        zIndex: 50,
       }}
       onMouseEnter={() => setIsNavbarHovered(true)}
       onMouseLeave={() => setIsNavbarHovered(false)}
@@ -460,14 +462,22 @@ const Navbar: React.FC<NavbarProps> = ({
                   {/* Categories Dropdown */}
                   {isCategoriesVisible && (
                     <div 
-                      className="fixed left-0 w-full z-50 shadow-2xl -mt-4"
+                      className="categories-dropdown-container fixed left-0 w-full z-[9999] shadow-2xl"
                       onMouseEnter={handleCategoriesMouseEnter}
                       onMouseLeave={handleCategoriesMouseLeave}
                       style={{
-                        top: shouldShrink ? '48px' : '72px', // Position directly at navbar bottom
+                        top: size === 'sm' ? '56px' : size === 'xs' ? '48px' : size === 'md' ? '72px' : size === 'lg' ? '80px' : '96px',
+                        left: '0',
+                        right: '0',
+                        width: '100vw',
+                        position: 'fixed',
+                        zIndex: 9999,
+                        marginTop: '0px',
                       }}
                     >
-                      <Categories />
+                      <div className="w-full">
+                        <Categories />
+                      </div>
                     </div>
                   )}
                 </div>

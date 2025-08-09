@@ -250,20 +250,20 @@ const Categories: React.FC = () => {
 
   // Update the return section to use responsive grid instead of fixed rows
   return (
-    <section className="w-full bg-[var(--category-bg)] border-y border-gray-600/30" id="categories-section">
-      <div className="w-full">
+    <section className="w-screen bg-[var(--category-bg)] border-y border-gray-600/30 overflow-hidden" id="categories-section" style={{ width: '100vw', maxWidth: '100vw', margin: 0, padding: 0 }}>
+      <div className="w-full max-w-full overflow-hidden" style={{ width: '100vw', maxWidth: '100vw', margin: 0, padding: 0 }}>
         {/* Title */}
         {CATEGORY_STYLES.title.show && (
           <h2 className={titleClasses} id="categories-title">{CATEGORY_STYLES.title.text}</h2>
         )}
 
         {/* Responsive Grid - All categories in one responsive grid */}
-        <div className="flex flex-wrap justify-center gap-0 bg-[var(--category-bg)]" id="categories-grid">
+        <div className="flex flex-wrap justify-center gap-0 bg-[var(--category-bg)] w-screen max-w-full overflow-hidden" id="categories-grid" style={{ width: '100vw', maxWidth: '100vw', margin: 0, padding: 0 }}>
           {categories.map((category) => (
             <Link
               key={category.id}
               to={`/category/${category.id}`}
-              className={rectangleClasses.replace('flex-1', 'w-[50%] sm:w-[33.333%] md:w-[25%] lg:w-[20%] xl:w-[16.666%] 2xl:w-[14.285%]')}
+              className={rectangleClasses.replace('flex-1', 'w-[50%] sm:w-[33.333%] md:w-[25%] lg:w-[20%] xl:w-[16.666%] 2xl:w-[14.285%] flex-shrink-0 min-w-0 box-border')}
               id={`category-link-${category.id}`}
               data-testid={`category-${category.id}`}
             >
